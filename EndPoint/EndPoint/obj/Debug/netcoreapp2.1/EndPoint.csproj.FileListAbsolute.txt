@@ -1,0 +1,14 @@
+D:\Repositories\BlogSystem\EndPoint\EndPoint\bin\Debug\netcoreapp2.1\EndPoint.deps.json
+D:\Repositories\BlogSystem\EndPoint\EndPoint\bin\Debug\netcoreapp2.1\EndPoint.runtimeconfig.json
+D:\Repositories\BlogSystem\EndPoint\EndPoint\bin\Debug\netcoreapp2.1\EndPoint.runtimeconfig.dev.json
+D:\Repositories\BlogSystem\EndPoint\EndPoint\bin\Debug\netcoreapp2.1\EndPoint.dll
+D:\Repositories\BlogSystem\EndPoint\EndPoint\obj\Debug\netcoreapp2.1\EndPoint.csprojAssemblyReference.cache
+D:\Repositories\BlogSystem\EndPoint\EndPoint\obj\Debug\netcoreapp2.1\EndPoint.csproj.CoreCompileInputs.cache
+D:\Repositories\BlogSystem\EndPoint\EndPoint\obj\Debug\netcoreapp2.1\EndPoint.RazorAssemblyInfo.cache
+D:\Repositories\BlogSystem\EndPoint\EndPoint\obj\Debug\netcoreapp2.1\EndPoint.RazorAssemblyInfo.cs
+D:\Repositories\BlogSystem\EndPoint\EndPoint\obj\Debug\netcoreapp2.1\EndPoint.AssemblyInfoInputs.cache
+D:\Repositories\BlogSystem\EndPoint\EndPoint\obj\Debug\netcoreapp2.1\EndPoint.AssemblyInfo.cs
+D:\Repositories\BlogSystem\EndPoint\EndPoint\obj\Debug\netcoreapp2.1\EndPoint.RazorTargetAssemblyInfo.cache
+D:\Repositories\BlogSystem\EndPoint\EndPoint\bin\Debug\netcoreapp2.1\EndPoint.pdb
+D:\Repositories\BlogSystem\EndPoint\EndPoint\obj\Debug\netcoreapp2.1\EndPoint.dll
+D:\Repositories\BlogSystem\EndPoint\EndPoint\obj\Debug\netcoreapp2.1\EndPoint.pdb
