@@ -10,7 +10,9 @@ namespace EndPoint.Models
         public int ID { get; set; }
         public string Text { get; set; }
 
-        public ApplicationUserModel User { get; set; }
+        public string UserGUID { get; set; }
+        public ApplicationUserModel ApplicationUser { get; set; }
+        public int PostID { get; set; }
         public PostModel Post { get; set; }
     }
 }

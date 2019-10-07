@@ -11,6 +11,7 @@ namespace EndPoint.Models
         public string Title { get; set; }
         public string Text { get; set; }
 
+        public string UserGUID { get; set; }
         public ApplicationUserModel ApplicationUser { get; set; }
         public ICollection<CommentModel> Comments { get; set; }
     }
