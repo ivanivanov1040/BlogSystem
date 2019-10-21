@@ -62,7 +62,7 @@ namespace EndPoint
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"))
                     };
                 });
-
+            
             services.AddDbContext<BlogContext>(o => o.UseSqlServer(conn));
             
         }
