@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EndPoint.Migrations
 {
     [DbContext(typeof(BlogContext))]
-    [Migration("20191005122028_IdentityTables")]
-    partial class IdentityTables
+    [Migration("20191008122405_ThemeTable")]
+    partial class ThemeTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -84,17 +84,17 @@ namespace EndPoint.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("PostID");
+                    b.Property<int>("PostID");
 
                     b.Property<string>("Text");
 
-                    b.Property<string>("UserId");
+                    b.Property<string>("UserGUID");
 
                     b.HasKey("ID");
 
                     b.HasIndex("PostID");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserGUID");
 
                     b.ToTable("Comments");
                 });
@@ -105,17 +105,36 @@ namespace EndPoint.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ApplicationUserId");
-
                     b.Property<string>("Text");
+
+                    b.Property<int>("ThemeID");
 
                     b.Property<string>("Title");
 
+                    b.Property<string>("UserGUID");
+
                     b.HasKey("ID");
 
-                    b.HasIndex("ApplicationUserId");
+                    b.HasIndex("ThemeID");
+
+                    b.HasIndex("UserGUID");
 
                     b.ToTable("Posts");
+                });
+
+            modelBuilder.Entity("EndPoint.Models.ThemeModel", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("ThemeModel");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -125,6 +144,9 @@ namespace EndPoint.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired();
 
                     b.Property<string>("Name")
                         .HasMaxLength(256);
@@ -140,6 +162,8 @@ namespace EndPoint.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityRole");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -228,22 +252,41 @@ namespace EndPoint.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("EndPoint.Models.ApplicationRoleModel", b =>
+                {
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityRole");
+
+                    b.Property<string>("Aditional");
+
+                    b.Property<string>("Description");
+
+                    b.ToTable("ApplicationRoleModel");
+
+                    b.HasDiscriminator().HasValue("ApplicationRoleModel");
+                });
+
             modelBuilder.Entity("EndPoint.Models.CommentModel", b =>
                 {
                     b.HasOne("EndPoint.Models.PostModel", "Post")
                         .WithMany("Comments")
-                        .HasForeignKey("PostID");
+                        .HasForeignKey("PostID")
+                        .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("EndPoint.Models.ApplicationUserModel", "User")
+                    b.HasOne("EndPoint.Models.ApplicationUserModel", "ApplicationUser")
                         .WithMany("Comments")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserGUID");
                 });
 
             modelBuilder.Entity("EndPoint.Models.PostModel", b =>
                 {
+                    b.HasOne("EndPoint.Models.ThemeModel", "Theme")
+                        .WithMany("Posts")
+                        .HasForeignKey("ThemeID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("EndPoint.Models.ApplicationUserModel", "ApplicationUser")
                         .WithMany("Posts")
-                        .HasForeignKey("ApplicationUserId");
+                        .HasForeignKey("UserGUID");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

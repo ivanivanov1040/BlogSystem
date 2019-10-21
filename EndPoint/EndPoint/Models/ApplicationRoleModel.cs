@@ -9,5 +9,6 @@ namespace EndPoint.Models
     public class ApplicationRoleModel : IdentityRole
     {
         public string Description { get; set; }
+        public string Aditional { get; set; }
     }
 }

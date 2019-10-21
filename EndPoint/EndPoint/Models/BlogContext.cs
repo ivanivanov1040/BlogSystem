@@ -15,6 +15,7 @@ namespace EndPoint.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<CommentModel>()
                 .HasOne<PostModel>(s => s.Post)
                 .WithMany(g => g.Comments)
@@ -29,6 +30,11 @@ namespace EndPoint.Models
                 .HasOne<ApplicationUserModel>(s => s.ApplicationUser)
                 .WithMany(g => g.Posts)
                 .HasForeignKey(s => s.UserGUID);
+
+            modelBuilder.Entity<PostModel>()
+                .HasOne<ThemeModel>(s => s.Theme)
+                .WithMany(g => g.Posts)
+                .HasForeignKey(s => s.ThemeID);
         }
 
         public DbSet<ApplicationUserModel> ApplicationUsers { get; set; }

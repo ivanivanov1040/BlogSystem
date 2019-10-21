@@ -13,6 +13,8 @@ namespace EndPoint.Models
 
         public string UserGUID { get; set; }
         public ApplicationUserModel ApplicationUser { get; set; }
+        public int ThemeID { get; set; }
+        public ThemeModel Theme { get; set; }
         public ICollection<CommentModel> Comments { get; set; }
     }
 }
